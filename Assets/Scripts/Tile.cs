@@ -44,25 +44,37 @@ public class Tile : MonoBehaviour
         tileRevelada = false;
     }*/
 
+    /*EscondeCarta
+     * Função para mostrar o sprite traseiro da carta
+     */
     public void EscondeCarta()
     {
         GetComponent<SpriteRenderer>().sprite = backCarta;
         tileRevelada = false;
     }
 
+    /*RevelaCarta
+     * Função para mostrar o sprite dianteiro da carta
+     */
     public void RevelaCarta()
     {
         GetComponent<SpriteRenderer>().sprite = originalCarta;
         tileRevelada = true;
     }
 
+    /*SetCartaOriginal
+     * Função para mostrar o sprite traseiro azul de um baralho
+     */
     public void SetCartaOriginal(Sprite novaCarta)
     {
         originalCarta = novaCarta;
     }
 
+    /*SetCartaTraseira
+     * Função para mostrar o sprite traseiro vermelho de um baralho
+     */
     public void SetCartaTraseira(Sprite novaTraseira)
     {
-        backCarta = novaTraseira;
+        backCarta = backCartaAlt;
     }
 }

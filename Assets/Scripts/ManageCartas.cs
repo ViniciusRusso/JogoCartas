@@ -72,6 +72,10 @@ public class ManageCartas : MonoBehaviour
         }
     }
 
+    /* MostraCartas
+     * Chama outras fubções para criar arrays com as 13 cartas de um naipe e
+     * para criar as cartas baseadas no prefab tile
+     */
     void MostraCartas()
     {
         int[] arrayEmbaralhado = CriaArrayEmbaralhado();
@@ -109,6 +113,10 @@ public class ManageCartas : MonoBehaviour
         }
     }
 
+    /* AddUmaCarta
+     * Função que cria as cartas, adicionando seu naipe e valor, com
+     * base no prefab tile e no modo de jogo escolhido
+     */
     void AddUmaCarta(int linha, int rank, int valor)
     {
         GameObject centro = GameObject.Find("centroDaTela");
@@ -178,6 +186,9 @@ public class ManageCartas : MonoBehaviour
         GameObject.Find("" + linha + "_" + valor).GetComponent<Tile>().SetCartaOriginal(s1);
     }
 
+    /* CriaArrayEmbaralhado
+     * Função que embaralha a ordem dos valores das 13 cartas de um naipe
+     */
     public int[] CriaArrayEmbaralhado()
     {
         int[] novoArray = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
@@ -192,6 +203,10 @@ public class ManageCartas : MonoBehaviour
         return novoArray;
     }
 
+    /* CartaSelecionada
+     * Função que verifica quantas cartas foram selecionadas e,
+     * após a segunda carta selecionada chama VerificaCartas
+     */
     public void CartaSelecionada(GameObject carta)
     {
         if (!primeiraCartaSelecionada)
@@ -213,6 +228,11 @@ public class ManageCartas : MonoBehaviour
         }
     }
 
+    /* VerificaCartas
+     * Função que chama DisparaTimer para esconder as cartas,
+     * aumenta o número de tentativas de formar os pares
+     * e chama UpdateTentativas
+     */
     public void VerificaCartas()
     {
         DisparaTimer();
@@ -220,12 +240,19 @@ public class ManageCartas : MonoBehaviour
         UpdateTentativas();
     }
 
+    /* DisparaTimer
+     * Função que altera as variáveis booleanas que controlam
+     * quando o timer estará ativo
+     */
     public void DisparaTimer()
     {
         timerPausado = false;
         timerAcionado = true;
     }
 
+    /* UpdateTentativas
+     * Função que altera o texto de número de tentativas na tela do jogo
+     */
     void UpdateTentativas()
     {
         GameObject.Find("numTentativas").GetComponent<Text>().text = "Tentativas: " + numTentativas;
